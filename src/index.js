@@ -1,13 +1,20 @@
-import React, { lazy } from 'react';
-import { createRoot } from 'react-dom/client';
-const LazyApp = lazy(()=>import('./App'))
+import React, { lazy } from "react";
+import { createRoot } from "react-dom/client";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import { CssBaseline } from "@mui/material";
 
-const container = document.getElementById('root')
-const root = createRoot(container)
+const LazyApp = lazy(() => import("./App"));
+
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <LazyApp />
+    <Provider store={store}>
+      <CssBaseline />
+      <LazyApp />
+    </Provider>
   </React.StrictMode>
 );
 
