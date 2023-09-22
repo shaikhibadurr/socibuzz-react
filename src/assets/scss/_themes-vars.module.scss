@@ -1,5 +1,6 @@
-// primary 
+// primary
 $primaryMain: #001c5a;
+$primaryLight: #003ab8;
 
 // secondary
 $secondaryMain: #1fcbac;
@@ -7,4 +8,5 @@ $secondaryMain: #1fcbac;
 :export {
   primaryMain: $primaryMain;
   secondaryMain: $secondaryMain;
+  primaryLight: $primaryLight;
 }

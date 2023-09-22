@@ -1,30 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
-import colors from "../../assets/scss/_themes-vars.module.scss";
+import { createSlice } from '@reduxjs/toolkit'
+import colors from '../../assets/scss/_themes-vars.module.scss'
+import { ThemeConfig } from 'utils/config'
 
 const initialState = {
-  palette: {
-    primary: {
-      main: colors?.primaryMain,
-    },
-    secondary: {
-      main: colors?.secondaryMain,
-    },
-  },
-};
+  primary: colors?.primaryMain,
+  secondary: colors?.secondaryMain,
+  fontFamily: ThemeConfig.fontFamily.DMSANS,
+  mode: ThemeConfig.mode.LIGHT,
+}
 
 const customizationSlice = createSlice({
-  name: "customization",
+  name: 'customization',
   initialState,
   reducers: {
-    addPrimaryColor: (state, action) => {
-      state.palette.primary.main = action.payload;
+    changeThemeColor: (state, action) => {
+      const defaultColor = ThemeConfig.themeColor.DEFAULT
+      const color =
+        action.payload === defaultColor ? initialState : action.payload
+      state.primary = color.primary
+      state.secondary = color.secondary
     },
-    addSecondaryColor: (state, action) => {
-      state.palette.secondary.main = action.payload;
+    changeFontFamily: (state, action) => {
+      state.fontFamily = action.payload
+    },
+    changeThemeMode: (state, action) => {
+      state.mode =
+        state.mode === ThemeConfig.mode.LIGHT
+          ? ThemeConfig.mode.DARK
+          : ThemeConfig.mode.LIGHT
     },
   },
-});
+})
 
-export const { addPrimaryColor, addSecondaryColor } =
-  customizationSlice.actions;
-export default customizationSlice.reducer;
+export const { changeThemeColor, changeFontFamily, changeThemeMode } =
+  customizationSlice.actions
+export default customizationSlice.reducer

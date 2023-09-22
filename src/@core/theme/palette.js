@@ -1,11 +1,12 @@
 export default function themePalette(theme) {
+  console.log('theme', theme.customization.mode)
   return {
-    palette: theme.customization?.palette,
-    // primary: {
-    //   main: theme.colors?.primaryMain,
-    // },
-    // secondary: {
-    //   main: theme.colors?.secondaryMain,
-    // },
-  };
+    mode: theme.customization.mode,
+    primary: {
+      main: theme.customization?.primary,
+    },
+    secondary: {
+      main: theme.customization?.secondary,
+    },
+  }
 }

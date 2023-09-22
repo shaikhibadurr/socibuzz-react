@@ -1,41 +1,25 @@
-import { Checkbox, FormControlLabel, Typography } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import themes from "./@core/theme";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { addPrimaryColor } from "./redux/slices/customization.slice";
-import { green } from "@mui/material/colors";
-import BasicCard from "./components/Card";
+import { Button, Checkbox, FormControlLabel, Typography } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import BasicCard from './components/Card'
+import { changeThemeMode } from 'redux/slices/customization.slice'
+import ThemeComponent from '@core/theme/ThemeComponent'
 
 function App() {
-  const dispatch = useDispatch();
-  const ThemeCustomization = useSelector((state) => state.customization);
-  useEffect(() => {
-    // dispatch(addPrimaryColor());
-  });
-
+  const dispatch = useDispatch()
   return (
     <>
-      <ThemeProvider theme={themes(ThemeCustomization)}>
-        <BasicCard />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-        <Typography variant="h1">This is Heading</Typography>
-        <Typography color="primary.main" variant="h1">
-          This isحخدرآ
-        </Typography>
-        <Typography color="primary.dark" variant="h1">
-          This is Heading
-        </Typography>
-        <Typography color="primary" variant="h1">
-          New Theme
-        </Typography>
-        <Typography color="secondary" variant="h1">
-          This is Heading
-        </Typography>
-        <Typography variant="h1">This is Heading</Typography>
-      </ThemeProvider>
+      <BasicCard />
+      <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+      <Typography variant="h1">This is Heading</Typography>
+      <Button variant="contained" onClick={() => dispatch(changeThemeMode())}>
+        Change Mode
+      </Button>
+      <Typography variant="h1">This is Heading</Typography>
+      <Typography color="secondary" variant="h1">
+        This is Heading
+      </Typography>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
