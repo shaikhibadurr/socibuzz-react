@@ -1,4 +1,4 @@
-import Dashboard from '../views/Dashboard'
+import Dashboard from 'views/Dashboard'
 import { AUTHENTICATED_URLS } from './routeConstants'
 const AuthenticatedRoutes = [
   {
