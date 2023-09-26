@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 import ThemeComponent from '@core/theme/ThemeComponent'
+import { BrowserRouter } from 'react-router-dom'
+import { BASE_URL } from 'router/routeConstants'
+import Loader from '@core/components/loading/Loader'
 
 const LazyApp = lazy(() => import('./App'))
 
@@ -11,13 +14,15 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <ThemeComponent>
-          <LazyApp />
-        </ThemeComponent>
-      </Suspense>
-    </Provider>
+    <BrowserRouter basename={BASE_URL}>
+      <Provider store={store}>
+        <Suspense fallback={<Loader />}>
+          <ThemeComponent>
+            <LazyApp />
+          </ThemeComponent>
+        </Suspense>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 )
 
