@@ -14,15 +14,15 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={BASE_URL}>
-      <Provider store={store}>
-        <Suspense fallback={<Loader />}>
-          <ThemeComponent>
+    <Provider store={store}>
+      <ThemeComponent>
+        <BrowserRouter basename={BASE_URL}>
+          <Suspense fallback={<Loader />}>
             <LazyApp />
-          </ThemeComponent>
-        </Suspense>
-      </Provider>
-    </BrowserRouter>
+          </Suspense>
+        </BrowserRouter>
+      </ThemeComponent>
+    </Provider>
   </React.StrictMode>
 )
 

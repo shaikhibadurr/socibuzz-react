@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, useTheme } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import themes from '.'
